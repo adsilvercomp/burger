@@ -3,6 +3,7 @@
 
 // Import the ORM to create functions that will interact with the database.
 var orm = require("../config/orm.js");
+var controller = require("../controllers/burgers_controller.js");
 
 var burger = {
   all: function(cb) {
