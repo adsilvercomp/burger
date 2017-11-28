@@ -6,7 +6,7 @@
 
 // Import MySQL connection.
 var connection = require("../config/connection.js");
-
+var controller = require("../controllers/burgers_controller.js");
 // Helper function for SQL syntax.
 // Let's say we want to pass 3 values into the mySQL query.
 // In order to write the query, we need 3 question marks.
@@ -56,6 +56,8 @@ var orm = {
       cb(result);
     });
   },
+
+  //** QUESTION: what do I need to pass into the create function in order to successfully insert rows into the table?
   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
@@ -76,6 +78,7 @@ var orm = {
       cb(result);
     });
   },
+  
   // An example of objColVals would be {name: panther, sleepy: true}
   update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
