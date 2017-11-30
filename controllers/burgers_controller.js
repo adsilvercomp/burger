@@ -3,7 +3,7 @@ express = require("express");
 var router = express.Router();
 
 //import burger.js
-var models = require("../models/burger.js");
+var burger = require("../models/burger.js");
 
 //create the router for the app
 
@@ -22,28 +22,29 @@ router.get("/", function(req, res) {
   
 // insertOne()
 //** where are you posting to?
-router.post("/api/cats", function(req, res) {
+router.post("/", function(req, res) {
+  console.log(req.body);
     burger.create([
       "burger_name", "devoured"
     ], [
-      req.body.name, req.body.devoured
+      req.body.name, false
     ], function(result) {
       // Send back the ID of the new quote
-      res.json({ id: result.insertId });
+      res.redirect("/");
     });
   });
 // updateOne()
 
-cat.update({
-    devoured: req.body.devoured
-  }, condition, function(result) {
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
+// burger.update({
+//     // devoured: req.body.devoured
+//   }, condition, function(result) {
+//     if (result.changedRows == 0) {
+//       // If no rows were changed, then the ID must not exist, so 404
+//       return res.status(404).end();
+//     } else {
+//       res.status(200).end();
+//     }
+//   });
 
 
 //export the router at the end of the file

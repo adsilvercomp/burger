@@ -7,6 +7,7 @@ var controller = require("../controllers/burgers_controller.js");
 
 var burger = {
   all: function(cb) {
+    //getting all data from the table burgers.
     orm.all("burgers", function(res) {
       cb(res);
     });

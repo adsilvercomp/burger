@@ -1,21 +1,24 @@
 {{!-- this file will contain the dynamic content being added to handelbars --}}
+{{!-- render to the first list where devoured is false and render to the second list where devoured is true --}}
 
 <h1>Burgers</h1>
 
 <ul>
   {{#each burgers}}
-  	<li>
-  	   <p>ID: {{this.id}}</p>
-       <p>Burger: {{this.burger}}</p>
-       <button type="submit">Eat it!</button>
-  	</li>
+  <li>
+    <p>Burger: {{this.burger_name}}</p>
+    <form action="/update">
+      <input type="hidden"> <!-- whatever you put as the input value will be sent to the backend-->
+      <button type="submit">Eat it!</button>
+    </form>
+  </li>
   {{/each}}
 </ul>
 
 <div>
   <form action="/" method="POST">
-  	<textarea type="text" name="burger"></textarea>
+    <input type="text" name="name"></input>
 
-  	<button type="submit">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 </div>
