@@ -7,6 +7,7 @@ var port = process.env.PORT || 3000;
 var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
+//when you include javascript in your index file public/assets/javascript
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
