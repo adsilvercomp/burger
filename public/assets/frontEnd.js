@@ -6,10 +6,15 @@ $(".eat").on("click", function (event) {
     alert("This is working");
     var id = $(this).data("id");
     var status = $(this).data("devoured");
-
     var eatState = {
         devoured: status
     };
+    if(status == true){
+        $(list1).remove(id);
+        $(list2).append(id);
+        console.log("bebimbop");
+    }
+
 
     /////////////////////////////////
 

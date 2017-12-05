@@ -1,26 +1,57 @@
 {{!-- this file will contain the dynamic content being added to handelbars --}} {{!-- render to the first list where devoured
 is false and render to the second list where devoured is true --}} {{!-- html form automatically returns an object --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<link rel="stylesheet" href="assets/burger_style.css">
 
 <h1>Burgers</h1>
 
-<ul>
+<div id="d1">
+<ul id="list1">
   {{#each burgers}}
   <li>
     <p>Burger: {{this.burger_name}}</p>
     
-    <form action="/update/{{id}}" method="POST" > 
-      <input type="hidden">
+    {{!-- <form action="/update/{{id}}" method="POST" >  --}}
+      {{!-- <input type="hidden"> --}}
       <!-- whatever you put as the input value will be sent to the backend-->
-      <button type="submit" class="eat" data-id="{{id}}" data-status="{{devoured}}">
+      <button type="button" class="eat"  data-id="{{id}}" data-status="{{devoured}}">
         {{!-- this should be the logic for deciding whether the burger has been eaten or not --}} {{#if devoured}} yum!{{else}} I'm
         hungry!{{/if}}
       </button>
-      </form> 
+      {{!-- </form>  --}}
   </li>
   {{/each}}
 </ul>
+</div> 
+
+
+
+<div id="d2">
+<ul id="list2">
+  <li>
+    <p>Burger: {{this.burger_name}}</p>
+    
+    {{!-- <form action="/update/{{id}}" method="POST" >  --}}
+      {{!-- <input type="hidden"> --}}
+      <!-- whatever you put as the input value will be sent to the backend-->
+      <button type="button" class="eat"  data-id="{{id}}" data-status="{{devoured}}">
+        {{!-- this should be the logic for deciding whether the burger has been eaten or not --}} {{#if devoured}} yum!{{else}} I'm
+        hungry!{{/if}}
+      </button>
+      {{!-- </form>  --}}
+  </li>
+
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
 
 <div id="eaten">
 
@@ -34,4 +65,4 @@ is false and render to the second list where devoured is true --}} {{!-- html fo
     </form>
   </div>
 
-  {{!-- <script type="text/javascript" src="assets/frontEnd.js"></script> --}}
+  <script type="text/javascript" src="assets/frontEnd.js"></script>

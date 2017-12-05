@@ -37,7 +37,7 @@ router.post("/", function (req, res) {
 // updateOne()
 
 // ** What was this /api referring to in the cats activity?
-router.post("/update/:id", function (req, res) {
+router.put("/update/:id", function (req, res) {
   // **
   var condition = "id = " + req.params.id;
 
@@ -52,8 +52,8 @@ router.post("/update/:id", function (req, res) {
      // If no rows were changed, then the ID must not exist, so 404
      return res.status(404).end();
     } else {
-      res.status(200);
-      res.redirect("/");
+      res.status(200).end();
+
     }
   });
 });
