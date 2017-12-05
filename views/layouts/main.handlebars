@@ -1,8 +1,7 @@
-{{!-- this file will contain the dynamic content being added to handelbars --}}
-{{!-- render to the first list where devoured is false and render to the second list where devoured is true --}}
-{{!-- html form automatically returns an object --}}
+{{!-- this file will contain the dynamic content being added to handelbars --}} {{!-- render to the first list where devoured
+is false and render to the second list where devoured is true --}} {{!-- html form automatically returns an object --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{{!-- <script type="text/javascript" src="../public/assets/frontEnd.js"></script> --}}
+
 
 <h1>Burgers</h1>
 
@@ -10,48 +9,29 @@
   {{#each burgers}}
   <li>
     <p>Burger: {{this.burger_name}}</p>
-    {{!-- <form action="/update"> --}}
-      {{!-- <input type="hidden"> <!-- whatever you put as the input value will be sent to the backend--> --}}
-      <button  type="button" class="devour">Eat it!</button>
-    {{!-- </form> --}}
+    
+    <form action="/update/{{id}}" method="POST" > 
+      <input type="hidden">
+      <!-- whatever you put as the input value will be sent to the backend-->
+      <button type="submit" class="eat" data-id="{{id}}" data-status="{{devoured}}">
+        {{!-- this should be the logic for deciding whether the burger has been eaten or not --}} {{#if devoured}} yum!{{else}} I'm
+        hungry!{{/if}}
+      </button>
+      </form> 
   </li>
   {{/each}}
 </ul>
 
-<div id ="eaten">
+<div id="eaten">
 
-<div>
-  
-  {{!-- this is the submit button for adding a new burger to the undevoured list --}}
-  <form action="/" method="POST">
-    <input type="text" name="name"></input>
+  <div>
 
-    <button type="submit">Submit</button>
-  </form>
-</div>
+    {{!-- this is the submit button for adding a new burger to the undevoured list --}}
+    <form action="/" method="POST">
+      <input type="text" name="name"></input>
 
-<script>
-$( ".devour" ).click(function() {
-    alert( "This is working" );
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-    var devouredStatus = {
-        devoured : true
-    }
-
-    var id = this.id1
-
-    $.ajax("/update/" + id,{
-        type: 'POST',
-        data: 'devoured',
-      }).then(
-          function(){
-            alert("it is working");
-              console.log("changed devoured to", devouredStatus);
-              location.reload();
-          }
-      );
-  });
-</script>	
-
-
-
+  {{!-- <script type="text/javascript" src="assets/frontEnd.js"></script> --}}

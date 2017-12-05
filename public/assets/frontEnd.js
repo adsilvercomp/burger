@@ -1,22 +1,28 @@
 //make an ajax call to the backend using the correct route.
 
+console.log("hello");
 
-$( ".devour" ).click(function() {
-    alert( "This is working" );
+$(".eat").on("click", function (event) {
+    alert("This is working");
+    var id = $(this).data("id");
+    var status = $(this).data("devoured");
 
-    var devouredStatus = {
-        devoured = true
-    }
+    var eatState = {
+        devoured: status
+    };
 
-    $.ajax("/update/" + id,{
+    /////////////////////////////////
+
+    $.ajax("/update/" + id, {
         type: 'PUT',
-        data: 'devoured',
-      }).then(
-          function(){
-            alert("it is working");
-              console.log("changed devoured to", devouredStatus);
-              location.reload();
-          }
-      );
-  });
+        data: null
+    }).then(function () {
+        alert("it is working");
+        console.log("changed the status of devoured to", status);
+        location.reload();
+    });
+});
+
+
+
 

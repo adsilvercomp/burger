@@ -15,7 +15,7 @@ router.get("/", function (req, res) {
     var hbsObject = {
       burgers: data
     };
-    console.log(hbsObject);
+    // console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
@@ -37,20 +37,23 @@ router.post("/", function (req, res) {
 // updateOne()
 
 // ** What was this /api referring to in the cats activity?
-router.put("/update/:id", function (req, res) {
+router.post("/update/:id", function (req, res) {
   // **
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
+  console.log(req.devoured);
+
   burger.update({
-    devoured: req.body.devoured
+    devoured: true,
   }, condition, function (result) {
-    if (result.devoured == 1) {
-      // If no rows were changed, then the ID must not exist, so 404
-      console.log("totally devoured");
+    if (result.devoured == 0) {
+     // If no rows were changed, then the ID must not exist, so 404
+     return res.status(404).end();
     } else {
-      console.log("not devoured");
+      res.status(200);
+      res.redirect("/");
     }
   });
 });
