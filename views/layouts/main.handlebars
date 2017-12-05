@@ -34,7 +34,7 @@ is false and render to the second list where devoured is true --}} {{!-- html fo
     {{!-- <form action="/update/{{id}}" method="POST" >  --}}
       {{!-- <input type="hidden"> --}}
       <!-- whatever you put as the input value will be sent to the backend-->
-      <button type="button" class="eat"  data-id="{{id}}" data-status="{{devoured}}">
+      <button type="button" class="eat" data-name="{{burger_name}}" data-id="{{id}}" data-status="{{devoured}}">
         {{!-- this should be the logic for deciding whether the burger has been eaten or not --}} {{#if devoured}} yum!{{else}} I'm
         hungry!{{/if}}
       </button>
